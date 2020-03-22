@@ -1,0 +1,21 @@
+<h1>Module list works!</h1>
+<h1>{{title}} {{modules.length}}</h1>
+<div class="row container">
+
+  <div class="col-4">
+    <input [(ngModel)]="newModuleTitle" class="form-control"/>
+    <button (click)="createModule(newModuleTitle)" class="btn btn-primary">
+      Create Module
+    </button>
+
+    <ul>
+      <li *ngFor="let module of modules"
+       
+       class="list-group-item">
+
+        {{module._id}}
+        {{module.title}}
+      </li>
+    </ul>
+  </div>
+</div>

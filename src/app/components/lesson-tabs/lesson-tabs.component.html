@@ -1,0 +1,14 @@
+<div>
+<ul class="nav nav-tabs">
+    <li *ngFor="let lesson of lessons"
+        class="nav-item nav-link">
+      {{lesson.title}}
+      <ul class="nav nav-pills">
+          <li *ngFor="let topic of lesson.topics"
+            class="nav-item nav-link active">
+            {{topic.title}}
+            </li>
+      </ul>
+    </li>
+</ul>
+</div>

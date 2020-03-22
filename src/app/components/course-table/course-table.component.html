@@ -1,0 +1,22 @@
+<h1>{{title}} {{courses.length}}</h1>
+<div class="row container">
+
+  <div class="col-4">
+    <input [(ngModel)]="newCourseTitle" class="form-control"/>
+    <button (click)="createCourse(newCourseTitle)" class="btn btn-primary">
+      Create Course
+    </button>
+
+    <ul>
+      <li *ngFor="let course of courses"
+       
+       class="list-group-item">
+        <button (click)="deleteCourse(course)" class="btn btn-primary">
+          Delete
+        </button>
+        {{course._id}}
+        {{course.title}}
+      </li>
+    </ul>
+  </div>
+</div>
