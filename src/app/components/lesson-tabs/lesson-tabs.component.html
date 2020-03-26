@@ -1,14 +1,12 @@
-<div>
-<ul class="nav nav-tabs">
-    <li *ngFor="let lesson of lessons"
+<div class="container">
+  <ul class="nav nav-tabs">
+      <li *ngFor="let lesson of lessons"
+        (click)="selectLesson(lesson._id)"
+        [ngClass]="{'active': lesson._id === selectedLessonId}"
         class="nav-item nav-link">
-      {{lesson.title}}
-      <ul class="nav nav-pills">
-          <li *ngFor="let topic of lesson.topics"
-            class="nav-item nav-link active">
-            {{topic.title}}
-            </li>
-      </ul>
-    </li>
-</ul>
+        <a routerLink='/table/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{lesson._id}}/topics'>
+          {{lesson.title}}
+        </a>
+      </li>
+  </ul>
 </div>

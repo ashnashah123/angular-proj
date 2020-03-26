@@ -1,32 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ModuleServiceClient } from '../../services/ModuleServiceClient';
-
+import { CourseServiceClient } from 'src/app/services/CourseServiceClient';
+import { LessonServiceClient } from 'src/app/services/LessonServiceClient';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-viewer',
   templateUrl: './course-viewer.component.html',
   styleUrls: ['./course-viewer.component.css']
 })
-export class CourseViewerComponent implements OnInit {
+export class CourseViewerComponent implements OnInit{
 
   title='Course Viewer Component'
-  newModuleTitle = ''
-  cid = ''
-  modules = [
-    {_id: '123', title: 'Module A'},
-    {_id: '234', title: 'Module B'},
-    {_id: '345', title: 'Module C'},
-    {_id: '456', title: 'Module D'},
-  ]
+  courseId
+  // modules = []
+  courseTitle
 
-  createModule = (title) =>
-    this.modules.push({_id: '321', title})
-
-  constructor(private service: ModuleServiceClient) { }
+  constructor(private moduleService: ModuleServiceClient, 
+    private courseService: CourseServiceClient, 
+    private lessonService: LessonServiceClient,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.service.findModulesForCourse(this.cid)
-      // .then(modules => this.modules = modules);
+    this.activatedRoute.params.subscribe(params => {
+      this.courseId = params['cid'];
+    });
+    
+    this.courseService.findCourseById(this.courseId)
+      .then(course => this.courseTitle = course.title);
+
+    // this.moduleService.findModulesForCourse(this.courseId)
+    //   .then(modules => {
+    //     console.log("the returned modules: ", modules);
+    //     this.modules = modules
+    //     console.log("this.modules after setting: ", this.modules);
+    //   });
   }
 
 }

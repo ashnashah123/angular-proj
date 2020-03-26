@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModuleServiceClient } from 'src/app/services/ModuleServiceClient';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { LessonServiceClient } from 'src/app/services/LessonServiceClient';
 
 
 @Component({
@@ -8,31 +11,35 @@ import { ModuleServiceClient } from 'src/app/services/ModuleServiceClient';
   styleUrls: ['./module-list.component.css']
 })
 export class ModuleListComponent implements OnInit {
-
-  selectedModule 
+  courseId = ''
+  selectedModuleId = ''
   title = "Module List Component"
   newModuleTitle = ''
-  modules = [
-    {_id: '123', title: 'Module A'},
-    {_id: '234', title: 'Module B'},
-    {_id: '345', title: 'Module C'},
-    {_id: '456', title: 'Module D'}
-  ]
+  modules = []
 
-  deleteModule = (moduleToDelete) =>
-  this.modules = this.modules.filter(module => module !== moduleToDelete)
 
-  createModule = (title) =>
-    this.modules.push({_id: '321', title})
+  // selectModule = (moduleId) => {
+  //   this.selectedModuleId = moduleId;
+  //   // this.lessonService.findLessonsForModule(this.selectedModuleId);
+  //   this.router.navigate(['table/courses/',this.courseId,'/modules',this.selectedModuleId,'/lessons'])
+  // }
+    
 
-  selectModule = (module) =>
-    this.selectedModule = module
-
-  constructor(private service: ModuleServiceClient) { }
+  constructor(
+    private moduleService: ModuleServiceClient, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private lessonService: LessonServiceClient) { }
 
   ngOnInit(): void {
-    // this.service.findModulesForCourse('123')
-    //   .then(modules => this.modules = modules);
+    this.activatedRoute.params.subscribe(params => {
+      this.courseId = params['cid'];
+    });
+
+    this.moduleService.findModulesForCourse(this.courseId)
+      .then(modules => {
+        this.modules = modules
+      });
     
   }
 

@@ -2,20 +2,15 @@
 <div class="row container">
 
   <div class="col-4">
-    <input [(ngModel)]="newCourseTitle" class="form-control"/>
-    <button (click)="createCourse(newCourseTitle)" class="btn btn-primary">
-      Create Course
-    </button>
-
     <ul>
-      <li *ngFor="let course of courses"
-       
-       class="list-group-item">
-        <button (click)="deleteCourse(course)" class="btn btn-primary">
-          Delete
-        </button>
+      <li (click)="selectCourse(course._id)"
+        class="list-group-item"
+        [ngClass]="{'active': course._id === selectedCourseId}"
+        *ngFor="let course of courses">
         {{course._id}}
-        {{course.title}}
+        <a routerLink='/table/courses/{{course._id}}/modules'>
+          {{course.title}}
+        </a>
       </li>
     </ul>
   </div>

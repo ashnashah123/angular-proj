@@ -1,21 +1,13 @@
-<h1>Module list works!</h1>
-<h1>{{title}} {{modules.length}}</h1>
-<div class="row container">
-
-  <div class="col-4">
-    <input [(ngModel)]="newModuleTitle" class="form-control"/>
-    <button (click)="createModule(newModuleTitle)" class="btn btn-primary">
-      Create Module
-    </button>
-
+<div class="container">
     <ul>
       <li *ngFor="let module of modules"
-       
+      class="list-group-item"
+      [ngClass]="{'active': module._id === selectedModuleId}"
        class="list-group-item">
-
-        {{module._id}}
-        {{module.title}}
+        <a routerLink='/table/courses/{{courseId}}/modules/{{module._id}}/lessons'>
+          {{module.title}}
+        </a>
       </li>
     </ul>
-  </div>
+    <app-lesson-tabs></app-lesson-tabs>
 </div>

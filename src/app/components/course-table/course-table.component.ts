@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseServiceClient} from '../../services/CourseServiceClient';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-course-table',
@@ -9,15 +11,10 @@ import {CourseServiceClient} from '../../services/CourseServiceClient';
 
 export class CourseTableComponent implements OnInit {
 
-  selectedCourse
+  selectedCourseId = ''
   title = 'Course Table Component'
   newCourseTitle = ''
-  courses = [
-    {_id: '123', title: 'Course A'},
-    {_id: '234', title: 'Course B'},
-    {_id: '345', title: 'Course C'},
-    {_id: '456', title: 'Course D'},
-  ]
+  courses = []
 
   deleteCourse = (courseToDelete) =>
     this.courses = this.courses.filter(course => course !== courseToDelete)
@@ -25,10 +22,16 @@ export class CourseTableComponent implements OnInit {
   createCourse = (title) =>
     this.courses.push({_id: '321', title})
 
-  selectCourse = (course) =>
-    this.selectCourse = course
+  selectCourse = (courseId) => {
+    this.selectedCourseId = courseId;
+    this.router.navigate(['table/courses/',this.selectedCourseId,'/modules'])
+  }
+    
+    
 
-  constructor(private service: CourseServiceClient) { }
+  constructor(
+    private service: CourseServiceClient,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.service.findAllCourses()

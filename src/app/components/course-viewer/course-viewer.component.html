@@ -1,18 +1,12 @@
 <h1>Course Viewer</h1>
-<!-- <h1>{{title}} {{course.id}}</h1> -->
+<button class='btn'>
+  <a routerLink='/table/courses'>
+    <i class="fas fa fa-times"></i>
+  </a>
+</button>
+Course: 
+{{courseTitle}}
 <div class="row">
-
-  <div class="col-4">
-    hi there
-    <!-- <input [(ngModel)]="newCourseTitle" class="form-control"/> -->
-
-    <ul>
-      <!-- <li *ngFor="let course of courses" class="list-group-item"> -->
-        <!-- <button (click)="deleteCourse(course)" class="btn btn-primary">
-          Delete
-        </button> -->
-        <!-- {{course.title}} -->
-      <!-- </li> -->
-    </ul>
-  </div>
+  <app-module-list class="col-4"></app-module-list>
+  <app-lesson-tabs  class="col-8"></app-lesson-tabs>
 </div>

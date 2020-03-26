@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LessonServiceClient } from 'src/app/services/LessonServiceClient';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lesson-tabs',
@@ -7,37 +9,30 @@ import { LessonServiceClient } from 'src/app/services/LessonServiceClient';
   styleUrls: ['./lesson-tabs.component.css']
 })
 export class LessonTabsComponent implements OnInit {
-
-  selectedLesson
+  courseId = ''
+  moduleId = ''
+  selectedLessonId = ''
   title = 'Lesson Tabs Component'
   newLessonTitle = ''
-  lessons = [
-    {_id: '123', title: 'Lesson A', 
-      topics: [
-        {_id: '123', title: 'Topic A'},
-        {_id: '234', title: 'Topic B'},
-        {_id: '345', title: 'Topic C'}
-      ]
-    },
-    {_id: '234', title: 'Lesson B', 
-    topics: [
-        {_id: '567', title: 'Topic D'},
-        {_id: '678', title: 'Topic E'},
-        {_id: '789', title: 'Topic F'}
-      ]
-    },
-    {_id: '345', title: 'Lesson C', 
-    topics: [
-        {_id: '1234', title: 'Topic G'},
-        {_id: '2345', title: 'Topic H'},
-        {_id: '3456', title: 'Topic I'}
-      ]
-    },
-  ]
-  constructor(private service: LessonServiceClient) { }
+  lessons = []
+
+  selectLesson = (lessonId) => {
+    this.selectedLessonId = lessonId;
+    this.router.navigate(['table/courses/',this.courseId,'/modules',this.moduleId,'/lessons',this.selectedLessonId,'/topics'])
+  }
+
+  constructor(
+    private lessonService: LessonServiceClient,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-
+    this.activatedRoute.params.subscribe(params => {
+      this.courseId = params['cid']
+      this.moduleId = params['mid']
+    })
+    this.lessonService.findLessonsForModule(this.moduleId)
+      .then(lessons => this.lessons = lessons);
   }
 
 }
