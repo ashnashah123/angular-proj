@@ -1,12 +1,14 @@
-<h1>Course Viewer</h1>
-<button class='btn'>
-  <a routerLink='/table/courses'>
-    <i class="fas fa fa-times"></i>
-  </a>
-</button>
-Course: 
-{{courseTitle}}
-<div class="row">
-  <app-module-list class="col-4"></app-module-list>
-  <app-lesson-tabs  class="col-8"></app-lesson-tabs>
+<div class="container">
+  <h1>Course Viewer</h1>
+  <button class='btn'>
+    <a routerLink='/table/courses'>
+      <i class="fas fa fa-times"></i>
+    </a>
+  </button>
+  Course: 
+  {{courseTitle}}
+  <div class="row">
+    <app-module-list class="col-4"></app-module-list>
+    <app-lesson-tabs  class="col-8"></app-lesson-tabs>
+  </div>
 </div>

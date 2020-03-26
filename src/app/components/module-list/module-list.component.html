@@ -1,6 +1,7 @@
 <div class="container">
     <ul>
       <li *ngFor="let module of modules"
+      (click)="selectModule(module._id)"
       class="list-group-item"
       [ngClass]="{'active': module._id === selectedModuleId}"
        class="list-group-item">
@@ -9,5 +10,4 @@
         </a>
       </li>
     </ul>
-    <app-lesson-tabs></app-lesson-tabs>
 </div>

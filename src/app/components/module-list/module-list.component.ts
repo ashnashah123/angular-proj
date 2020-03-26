@@ -18,11 +18,11 @@ export class ModuleListComponent implements OnInit {
   modules = []
 
 
-  // selectModule = (moduleId) => {
-  //   this.selectedModuleId = moduleId;
-  //   // this.lessonService.findLessonsForModule(this.selectedModuleId);
-  //   this.router.navigate(['table/courses/',this.courseId,'/modules',this.selectedModuleId,'/lessons'])
-  // }
+  selectModule = (moduleId) => {
+    this.selectedModuleId = moduleId;
+    // this.lessonService.findLessonsForModule(this.selectedModuleId);
+    this.router.navigate(['table/courses/',this.courseId,'/modules',this.selectedModuleId,'/lessons'])
+  }
     
 
   constructor(
