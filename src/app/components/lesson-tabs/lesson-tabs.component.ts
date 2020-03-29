@@ -30,9 +30,10 @@ export class LessonTabsComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.courseId = params['cid']
       this.moduleId = params['mid']
-    })
-    this.lessonService.findLessonsForModule(this.moduleId)
+      this.lessonService.findLessonsForModule(this.moduleId)
       .then(lessons => this.lessons = lessons);
+    })
+
   }
 
 }
