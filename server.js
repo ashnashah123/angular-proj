@@ -4,5 +4,5 @@ const app = express();
 app.use(express.static(__dirname + '/dist/angular-proj'));
 app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+
-'/dist/angular-proj/src/index.html'));});
+'/dist/angular-proj/index.html'));});
 app.listen(process.env.PORT || 8080);
