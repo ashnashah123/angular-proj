@@ -13,7 +13,6 @@ export class CourseViewerComponent implements OnInit{
 
   title='Course Viewer Component'
   courseId
-  // modules = []
   courseTitle
 
   constructor(private moduleService: ModuleServiceClient, 
@@ -28,13 +27,6 @@ export class CourseViewerComponent implements OnInit{
     
     this.courseService.findCourseById(this.courseId)
       .then(course => this.courseTitle = course.title);
-
-    // this.moduleService.findModulesForCourse(this.courseId)
-    //   .then(modules => {
-    //     console.log("the returned modules: ", modules);
-    //     this.modules = modules
-    //     console.log("this.modules after setting: ", this.modules);
-    //   });
   }
 
 }

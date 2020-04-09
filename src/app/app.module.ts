@@ -8,10 +8,17 @@ import {FormsModule} from '@angular/forms';
 import {CourseServiceClient} from './services/CourseServiceClient';
 import {ModuleServiceClient} from './services/ModuleServiceClient';
 import { LessonServiceClient } from './services/LessonServiceClient';
+import { QuizServiceClient } from './services/quiz.service.client';
+import { QuestionServiceClient } from './services/question.service.client';
 
 import { CourseViewerComponent } from './components/course-viewer/course-viewer.component';
 import { ModuleListComponent } from './components/module-list/module-list.component';
 import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.component';
+import { QuizzesComponent } from './components/quizzes/quizzes.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { MultipleChoiceQuestionComponent } from './components/multiple-choice-question/multiple-choice-question.component';
+import { TrueFalseQuestionComponent } from './components/true-false-question/true-false-question.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +26,11 @@ import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.compon
     CourseTableComponent,
     CourseViewerComponent,
     ModuleListComponent,
-    LessonTabsComponent
+    LessonTabsComponent,
+    QuizzesComponent,
+    QuizComponent,
+    MultipleChoiceQuestionComponent,
+    TrueFalseQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +40,9 @@ import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.compon
   providers: [
     CourseServiceClient,
     ModuleServiceClient,
-    LessonServiceClient
+    LessonServiceClient,
+    QuizServiceClient,
+    QuestionServiceClient
   ],
   bootstrap: [AppComponent]
 })
