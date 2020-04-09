@@ -10,10 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuizzesComponent implements OnInit {
   courseId = ''
-  quizzes = [
-    {'_id': 123, 'title': 'ashna'},
-    {'_id': 234, 'title': 'ciarra'}
-  ]
+  quizzes = []
 
   constructor(
     private service: QuizServiceClient,

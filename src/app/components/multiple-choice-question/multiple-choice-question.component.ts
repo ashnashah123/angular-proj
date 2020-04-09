@@ -16,12 +16,12 @@ export class MultipleChoiceQuestionComponent implements OnInit {
   answer = 'No answer yet'
   @Output()
   answerChange = new EventEmitter<string>()
-  changeCorrectColor
-  changeIncorrectColor
-  selectedChoice
+  changeCorrectColor = false
+  changeIncorrectColor = false
+  selectedChoice = ''
 
   submitAnswer = () => {
-    this.answerChange.emit(this.answer)
+    // this.answerChange.emit(this.answer)
     this.turnGreen()
   }
 

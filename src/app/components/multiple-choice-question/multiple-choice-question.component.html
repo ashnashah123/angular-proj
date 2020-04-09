@@ -1,26 +1,26 @@
 <div class="container">
-{{question.question}}
-<ul class="list-group">
-    <li *ngFor="let choice of question.choices" class="list-group-item"
-    [ngClass]="{'list-group-item-success': changeCorrectColor && choice === question.correct}"
-    [ngClass]="{'list-group-item-danger': choice !== question.correct && changeIncorrectColor && choice == selectedChoice}">
-    <i *ngif="choice !== question.correct && changeIncorrectColor && choice == selectedChoice" class="fa fa-times"></i>
-    <i *ngif="changeCorrectColor && choice === question.correct" class="fa fa-check"></i>
-        <input [(ngModel)]="answer"
-           type="radio"
-           value="{{choice}}"
-           name="{{question._id}}"
-           (click)="selectChoice(choice)"
-           />
-        {{choice}}
-    </li>
-</ul>
-<br/>
-Your answer: {{answer}}
-<br/>
-<br/>
-<button class='btn btn-success' 
-  (click)="submitAnswer()">
-  Grade
-</button>
-</div>
+  {{question.question}}
+  <ul class="list-group">
+      <li *ngFor="let choice of question.choices" class="list-group-item"
+      [ngClass]="{'list-group-item-success': changeCorrectColor && choice === question.correct}"
+      [ngClass]="{'list-group-item-danger': choice !== question.correct && changeIncorrectColor && choice == selectedChoice}">
+      <!-- <i *ngif="choice !== question.correct && changeIncorrectColor && choice == selectedChoice" class="fa fa-times"></i> -->
+      <!-- <i *ngif="changeCorrectColor && choice === question.correct" class="fa fa-check"></i> -->
+          <input [(ngModel)]="answer"
+             type="radio"
+             value="{{choice}}"
+             name="{{question._id}}"
+             (click)="selectChoice(choice)"
+             />
+          {{choice}}
+      </li>
+  </ul>
+  <br/>
+  Your answer: {{answer}}
+  <br/>
+  <br/>
+  <button class='btn btn-success' 
+    (click)="submitAnswer()">
+    Grade
+  </button>
+  </div>
