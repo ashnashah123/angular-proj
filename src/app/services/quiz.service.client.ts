@@ -2,9 +2,11 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class QuizServiceClient {
   findAllQuizzes = () =>
-    fetch('https://guarded-anchorage-75909.herokuapp.com/api/quizzes')
+    // fetch('http://localhost:3000/api/quizzes')
+    fetch('https://secure-tundra-22276.herokuapp.com/api/quizzes')
       .then(response => response.json())
   findQuizById = (qid) =>
-    fetch(`https://guarded-anchorage-75909.herokuapp.com/api/quizzes/${qid}`)
+    // fetch(`http://localhost:3000/api/quizzes/${qid}`)
+    fetch(`https://secure-tundra-22276.herokuapp.com/api/quizzes/${qid}`)
       .then(response => response.json())
 }
