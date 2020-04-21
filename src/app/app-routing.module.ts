@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'table/courses/:cid/modules', component: CourseViewerComponent},
   {path: 'table/courses/:cid/modules/:mid/lessons', component: CourseViewerComponent},
   {path: 'table/courses/:cid/quizzes', component: QuizzesComponent},
-  {path: 'courses/:cid/quizzes/:qid', component: QuizComponent}
+  {path: 'courses/:cid/quizzes/:qid/questions', component: QuizComponent}
 
 
 ];

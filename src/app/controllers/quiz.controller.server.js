@@ -1,4 +1,4 @@
-const quizService = require('../services/quiz.service.server')
+const quizService = require('../services/quiz.service.client')
 module.exports = function(app) {
     // TODO: is this supposed to be req or res?
     app.get('/api/quizzes', (req, res) => {

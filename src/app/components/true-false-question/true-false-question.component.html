@@ -1,29 +1,19 @@
 <div class="container">
 <h4>{{question.question}}</h4>
 <ul class="list-group">
-  <li class="list-group-item"
-  [ngClass]="{'list-group-item-success': changeCorrectColor}">
-  <i *ngif="changeCorrectColor" class="fa fa-check"></i>
-      <label>
-        <input
-          [(ngModel)]="answer"
-          type="radio"
-          value="true"
-          name="{{question._id}}"/> Yes
-      </label>
-  </li>
-  <li class="list-group-item"
-  [ngClass]="{'list-group-item-danger': changeIncorrectColor}">
-  <i *ngif="changeIncorrectColor" class="fa fa-times"></i>
-  <label>
-    <input
-      [(ngModel)]="answer"
-      type="radio"
-      value="false"
-      name="{{question._id}}"/> No
-  </label>
-</li>
-
+<li *ngFor="let choice of choices" class="list-group-item"
+      [ngClass]="{'list-group-item-success': changeCorrectColor && choice === question.correct}"
+      [ngClass]="{'list-group-item-danger': choice !== question.correct && changeIncorrectColor && choice == selectedChoice}">
+      <!-- <i *ngif="choice !== question.correct && changeIncorrectColor && choice == selectedChoice" class="fa fa-times"></i> -->
+      <!-- <i *ngif="changeCorrectColor && choice === question.correct" class="fa fa-check"></i> -->
+          <input [(ngModel)]="answer"
+             type="radio"
+             value="{{choice}}"
+             name="{{question._id}}"
+             (click)="selectChoice(choice)"
+             />
+          {{choice}}
+      </li>
 </ul>
 <br/>
 Your answer: {{answer}}

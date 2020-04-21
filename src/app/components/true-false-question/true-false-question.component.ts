@@ -16,23 +16,29 @@ export class TrueFalseQuestionComponent implements OnInit {
   answer = 'No answer yet'
   @Output()
   answerChange = new EventEmitter<string>()
+  @Input()
+  correct
+
   changeCorrectColor = false
   changeIncorrectColor = false
-  faCheck = faCheck;
-  faTimes = faTimes;
+  choices = ["true", "false"]
+  selectedChoice = ''
 
   submitAnswer = () => {
-    // this.answerChange.emit(this.answer)
+    this.answerChange.emit(this.answer)
     this.turnGreen()
   }
 
   turnGreen = () => {
-    if (this.answer !== this.question.correct) {
-      console.log("here")
+    if (this.answer !== this.correct) {
       this.changeIncorrectColor = true
     } 
     this.changeCorrectColor = true
   }
+
+  selectChoice = (choice) => {
+    this.selectedChoice = choice
+  }  
 
   constructor() { }
 
